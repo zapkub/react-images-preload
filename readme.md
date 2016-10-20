@@ -95,3 +95,28 @@ Promise<HTMLImageElement> createImageOnLoadPromise ( url: string, key: string )
 
 helper function that create [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will resolve Image object after request done.
 
+# Development
+
+you can clone this repe and run a few command to run a project
+```
+npm install -g gulp mocha
+npm install
+```
+### Build
+```
+gulp build
+```
+
+### Run
+```
+npm start
+```
+or just open example/index.html for global module 
+
+### Testing 
+```
+npm test
+```
+
+### Contribution
+Plase feel free to create issues or pull request.
