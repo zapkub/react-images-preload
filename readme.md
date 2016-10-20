@@ -1,4 +1,5 @@
-# React Images preload promise
+
+# React Images preload promise [![Build Status](https://travis-ci.org/zapkub/react-images-preload.svg?branch=master)](https://travis-ci.org/zapkub/react-images-preload)
 
 This libray help you deal with all messy preloading image in your react component
 

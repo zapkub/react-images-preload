@@ -1,7 +1,7 @@
-/// <reference path="index.tsx" />
+/// <reference path="../src/index.d.ts" />
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import * as ImagesPromise from './index';
+import * as ImagesPromise from "../dist/index";
 const mountPoint = document.createElement('div');
 mountPoint.id = 'mount';
 document.body.appendChild(mountPoint);

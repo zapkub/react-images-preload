@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: [
     'babel-polyfill',
-    './src/test.tsx'
+    './test/test.tsx'
   ],
   output: {
     libraryTarget: "var",
@@ -27,7 +27,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        include: /src/,
+        include: /test/,
         test: /\.tsx$/, exclude: /node_modules/, loader: 'babel?cacheDirectory!ts'
       }
     ]

@@ -3,7 +3,6 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
-
 import { libFactory } from '../dist/index';
 
 
@@ -23,7 +22,7 @@ class MockImage {
 const withImagesPromise = libFactory(React, MockImage).withImagesPromise;
 
 const imgURL = `https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150`;
-
+console.log('begin test')
 describe('withImageLoaded', function () {
     var Enchant, Component, wrapper;
     beforeEach(function () {
@@ -87,8 +86,7 @@ describe('withImageLoaded', function () {
                 expect(wrapper.find(Component).props().isImagesLoaded).to.be.a('boolean');
                 expect(wrapper.find(Component).props().isImagesLoaded).to.be.true;
                 done();
-            }, 400)
-           
+            }, 400);
         });
     })
 
