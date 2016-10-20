@@ -1,97 +1,95 @@
 'use strict'
 
-export interface ImageLoadedStatic {
-    createImageOnLoadPromise: (url: string, key: string) => Promise<HTMLImageElement>,
-    withImagesLoadedComponent: (ImageDataSource: any, CompositionComponent: any) => any;
-} 
+declare var React: any;
+namespace ImagesPromise {
 
-
-function libFactory(react, MockImage?): ImageLoadedStatic{
-
-    function createImageOnLoadPromise(url: string, key: string) {
-        return new Promise<HTMLImageElement>((resolve, reject) => {
-            const image = MockImage ? new MockImage() : new Image();
-            image.name = key;
-            image.onload = function () {
-                resolve(image);
-            }
-            image.onerror = function () {
-                reject(image);
-            }
-            image.src = url;
-        });
+    interface ImageLoadedStatic {
+        createImageOnLoadPromise: (url: string, key: string) => Promise<HTMLImageElement>,
+        withImagesPromise: (ImageDataSource: any, CompositionComponent: any) => any;
     }
 
-    /** 
-     * @params {[propsName]: [ImageURL]}, Component
-     * @return React class
-     */
-    function withImagesLoadedComponent(ImageDataSource: any, CompositionComponent: any) {
-        
-        type ImageLoadState = {
-            imageData: any;
-            isLoaded: boolean;
-            promiseCollection: any[];
+    export function libFactory(React?, MockImage?): ImageLoadedStatic {
+        if(!React) {
+            if (typeof require !== 'undefined') {
+                React = require('react');
+            } else {
+                
+            }
         }
+        function createImageOnLoadPromise(url: string, key: string) {
+            return new Promise<HTMLImageElement>((resolve, reject) => {
+                const image = MockImage ? new MockImage() : new Image();
+                image.name = key;
+                image.onload = function () {
+                    resolve(image);
+                }
+                image.onerror = function () {
+                    reject(image);
+                }
+                image.src = url;
+            });
+        }
+
         /** 
-         * Create Promise
+         * @params {[propsName]: [ImageURL]}, Component
+         * @return React class
          */
-        const ImagesLoadedPromise = react.createClass({
-            getInitialState() {
-                const promiseCollection: Promise<HTMLImageElement>[] = [];
-                for (const key in ImageDataSource) {
-                    promiseCollection.push(createImageOnLoadPromise(ImageDataSource[key], key));
-                }
-                return {
-                    promiseCollection,
-                    imageData: {},
-                    isLoaded: false
-                }
-            },
-            componentDidMount() {
-                Promise.all<HTMLImageElement>(this.state.promiseCollection).then(
-                    (result) => {
-                        const imageData = {};
-                        result.map(image => {
-                            imageData[image.name] = image.src;
-                        });
-                        this.setState({
-                            imageData,
-                            isLoaded: true
-                        });
-                    }
-                );
-            },
-            render() {
-                return <CompositionComponent ref='child' images={this.state.imageData} isImageLoaded={this.state.isLoaded} {...this.props} />
+        function withImagesPromise(ImageDataSource: any, CompositionComponent: any) {
+
+            type ImageLoadState = {
+                imageData: any;
+                isLoaded: boolean;
+                promiseCollection: any[];
             }
-        })
-        return ImagesLoadedPromise;
+            /** 
+             * Create Promise
+             */
+            const ImagesLoadedPromise = React.createClass({
+                getInitialState() {
+                    const promiseCollection: Promise<HTMLImageElement>[] = [];
+                    for (const key in ImageDataSource) {
+                        promiseCollection.push(createImageOnLoadPromise(ImageDataSource[key], key));
+                    }
+                    return {
+                        promiseCollection,
+                        imageData: {},
+                        isLoaded: false
+                    }
+                },
+                componentDidMount() {
+                    Promise.all<HTMLImageElement>(this.state.promiseCollection).then(
+                        (result) => {
+                            const imageData = {};
+                            result.map(image => {
+                                imageData[image.name] = image.src;
+                            });
+                            this.setState({
+                                imageData,
+                                isLoaded: true
+                            });
+                        }
+                    );
+                },
+                render() {
+                    return <CompositionComponent images={this.state.imageData} isImagesLoaded={this.state.isLoaded} {...this.props} />
+                }
+            })
+            return ImagesLoadedPromise;
+        }
+        return {
+            createImageOnLoadPromise,
+            withImagesPromise
+        }
     }
-    return {
-        createImageOnLoadPromise,
-        withImagesLoadedComponent
-    }
+
+
+
+    export const withImagesPromise = libFactory().withImagesPromise;
+    export const createImageOnLoadPromise = libFactory().withImagesPromise;
+    
 }
 
-/**
- * backward support
- * */ 
-if (typeof exports !== 'undefined') {
-    var React = require('react');
-    if (typeof module !== 'undefined' && module.exports) {
-        exports = module.exports = {
-            libFactory,
-            createImageOnLoadPromise: libFactory(React).createImageOnLoadPromise,
-            ImagesLoadedComponent: libFactory(React).withImagesLoadedComponent
-        };
-    }
-    exports.imageLoaded = {
-        libFactory,
-        createImageOnLoadPromise: libFactory(React).createImageOnLoadPromise,
-        ImagesLoadedComponent: libFactory(React).withImagesLoadedComponent
-    };
-} else {
-    // static lib
-    var ImagesLoaded = libFactory(React);
-}
+
+var ImagesLoaded = ImagesPromise.libFactory((window as any).React || undefined);
+(window as any).module = (window as any).module || {};
+export = ImagesPromise;

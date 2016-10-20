@@ -3,16 +3,17 @@
     "outDir": "./dist/",
     "noImplicitAny": false,
     "noEmitOnError": true,
-    "emitDecoratorMetadata": true,
     "removeComments": true,
     "module": "commonjs",
     "diagnostics": true,
     "sourceMap": true,
     "target": "ES6",
     "jsx": "react",
-    "experimentalDecorators": true,
     "allowUnusedLabels": true
   },
+  "files":[
+    "./src/index.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
