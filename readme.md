@@ -1,4 +1,4 @@
-# React Images preload promise [![Build Status](https://travis-ci.org/zapkub/react-images-preload.svg?branch=master)](https://travis-ci.org/zapkub/react-images-preload)
+# React Images preload promise [![Build Status](https://travis-ci.org/zapkub/react-images-preload.svg?branch=master)](https://travis-ci.org/zapkub/react-images-preload) [![npm version](https://badge.fury.io/js/react-images-preload.svg)](https://badge.fury.io/js/react-images-preload)
 
 This libray help you deal with all messy preloading image in your react component
 
@@ -17,7 +17,7 @@ bower install --save react-images-preload
 ```
 
 ## Usage
-With out using module import
+### With out using module import
 ```
 <script src="../bower_components/react-images-preload/dist/index.js"></script>
 
@@ -30,7 +30,7 @@ var WithimagesLoaded = ImagesLoaded.withImagesPromise({
 ... render to DOM
 </script>
 ```
-
+### with commonjs module
 ```
 
 import * as React from 'react';
