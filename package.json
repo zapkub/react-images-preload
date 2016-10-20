@@ -1,18 +1,19 @@
 {
   "name": "react-images-preload",
   "version": "1.0.0",
-  "description": "",
+  "description": "This libray help you deal with all messy preloading image in your react component",
   "main": "dist/index.js",
   "typings": "dist/index",
   "files": [
-    "src/"
+    "src/",
+    "dist/"
   ],
   "scripts": {
     "start": "webpack-dev-server",
     "test": "mocha test/helpers/browser.js test/*.spec.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Rungsikorn <rungsikorn@me.com> (http://rungsikorn.rocks)",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",

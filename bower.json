@@ -1,11 +1,29 @@
 {
   "name": "react-images-preload",
   "description": "This lib provide a component that will create and resolve list of image url for your component",
-  "main": "dist/index.js",
+  "main": [
+    "dist/index.js"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "authors": [
+    "Rungsikorn <rungsikorn@me.com>"
+  ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/zapkub/react-images-preload",
   "ignore": [
-    "**/.*",
+    "src",
+    "test",
+    ".babelrc",
+    ".npmignore",
+    ".gitignore",
+    ".travis.yml",
+    "gulpfile.js",
+    "package.json",
+    "readme.md",
+    "tsconfig.json",
+    "webpack.config.js",
     "node_modules",
     "bower_components",
     "test",
