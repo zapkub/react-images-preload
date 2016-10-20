@@ -122,3 +122,6 @@ npm test
 
 ### Contribution
 Plase feel free to create issues or pull request.
+
+### License
+MIT
