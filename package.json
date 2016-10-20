@@ -1,5 +1,5 @@
 {
-  "name": "react-images-loaded-promise",
+  "name": "react-images-preload",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "mocha -w test/helpers/browser.js test/*.spec.js"
+    "test": "mocha test/helpers/browser.js test/*.spec.js"
   },
   "author": "",
   "license": "ISC",

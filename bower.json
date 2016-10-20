@@ -1,8 +1,8 @@
 {
-  "name": "react-images-loaded-promise",
-  "description": "",
+  "name": "react-images-preload",
+  "description": "This lib provide a component that will create and resolve list of image url for your component",
   "main": "dist/index.js",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "",
   "ignore": [
     "**/.*",
