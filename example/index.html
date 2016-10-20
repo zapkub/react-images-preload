@@ -25,11 +25,11 @@ var Component = React.createClass({
         return (
             <div>
                 {
-                    // if props isImageLoaded = true
+                    // if props isImagesLoaded = true
                     // show content
                     // if not
                     // show loading screen
-                    this.props.isImageLoaded ?
+                    this.props.isImagesLoaded ?
                         <div>
                             <h1>Hello, world! </h1>
                             <img src={this.props.images.image1} />
@@ -45,7 +45,7 @@ var Component = React.createClass({
     }
 })
 
-var WithimagesLoaded = ImagesLoaded.withImagesLoadedComponent({
+var WithimagesLoaded = ImagesLoaded.withImagesPromise({
     image1: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150',
     fox: 'http://coolwildlife.com/wp-content/uploads/galleries/post-3004/Fox%20Picture%20003.jpg'
 }, Component);

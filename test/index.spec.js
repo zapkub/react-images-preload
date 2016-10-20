@@ -20,7 +20,7 @@ class MockImage {
     }
 
 }
-const ImagesLoadedComponent = libFactory(React, MockImage).withImagesLoadedComponent;
+const withImagesPromise = libFactory(React, MockImage).withImagesPromise;
 
 const imgURL = `https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150`;
 
@@ -32,7 +32,7 @@ describe('withImageLoaded', function () {
                 return <div>Testing <img src={this.props.images.image1} /></div>;
             }
         })
-        Enchant = ImagesLoadedComponent({
+        Enchant = withImagesPromise({
             image1: imgURL
         }, Component);
         wrapper = mount(<Enchant />);
@@ -75,8 +75,8 @@ describe('withImageLoaded', function () {
         it('should receive props isLoaded as false and img is not have src', function (done) {
             expect(wrapper.find('img')).to.have.length(1);
             expect(wrapper.find('img').props().src).to.be.a('undefined');
-            expect(wrapper.find(Component).props().isImageLoaded).to.be.a('boolean');
-            expect(wrapper.find(Component).props().isImageLoaded).to.be.false;
+            expect(wrapper.find(Component).props().isImagesLoaded).to.be.a('boolean');
+            expect(wrapper.find(Component).props().isImagesLoaded).to.be.false;
             done();
         });
 
@@ -84,8 +84,8 @@ describe('withImageLoaded', function () {
             setTimeout(() => {
                 expect(wrapper.find('img')).to.have.length(1);
                 expect(wrapper.find('img').props().src).to.not.be.null
-                expect(wrapper.find(Component).props().isImageLoaded).to.be.a('boolean');
-                expect(wrapper.find(Component).props().isImageLoaded).to.be.true;
+                expect(wrapper.find(Component).props().isImagesLoaded).to.be.a('boolean');
+                expect(wrapper.find(Component).props().isImagesLoaded).to.be.true;
                 done();
             }, 400)
            
