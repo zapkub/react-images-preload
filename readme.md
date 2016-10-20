@@ -3,6 +3,8 @@
 This libray help you deal with all messy preloading image in your react component
 
 ### Feature
+Resolve all giving imageURLs and then tell composite component when everything done
+
  - use as Higher order component
  - use as Component (Soon)
 
